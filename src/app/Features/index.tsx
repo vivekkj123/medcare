@@ -3,11 +3,11 @@ import Image from "next/image";
 const Features = () => {
   return (
     <div className="bg-accent-2">
-      <h2 className="text-3xl text-center py-20 text-primary font-bold">
+      <h2 className="text-3xl text-center py-12 md:py-20 text-primary font-bold">
         Features
       </h2>
-      <div className="grid grid-cols-2  text-center px-16">
-        <div className="border-primary-2 border-b-2  border-opacity-20 border-r-2 py-12">
+      <div className="grid md:grid-cols-2  text-center px-16">
+        <div className="border-0 md:border-primary-2 md:border-b-2  md:border-opacity-20 md:border-r-2 py-2 md:py-12">
           <Image
             className="mx-auto py-6"
             width={60}
@@ -22,7 +22,7 @@ const Features = () => {
             within the healthcare ecosystem
           </p>
         </div>
-        <div className="border-primary-2 border-b-2 border-l-2 border-opacity-20 py-12">
+        <div className="border-0 md:border-primary-2 md:border-b-2 md:border-l-2 md:border-opacity-20 py-2 md:py-12">
           <Image
             className="mx-auto py-6"
             width={60}
@@ -36,8 +36,8 @@ const Features = () => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2 text-center px-16">
-        <div className="border-primary-2 border-t-2 border-opacity-20 border-r-2 py-12">
+      <div className="grid md:grid-cols-2 text-center px-16">
+        <div className="border-0 md:border-primary-2 md:border-t-2 md:border-opacity-20 md:border-r-2 py-2 md:py-12">
           <Image
             className="mx-auto py-6"
             width={60}
@@ -50,7 +50,7 @@ const Features = () => {
             records
           </p>
         </div>
-        <div className="border-primary-2 border-t-2 border-opacity-20 border-l-2 py-12">
+        <div className="border-0 md:border-primary-2 md:border-t-2 md:border-opacity-20 md:border-l-2 py-2 md:py-12">
           <Image
             className="mx-auto py-6"
             width={60}

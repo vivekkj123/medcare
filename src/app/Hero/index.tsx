@@ -3,18 +3,18 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className=" bg-accent grid grid-cols-2 py-16 px-20 items-center">
-      <div className="flex flex-col justify-center font-bold ">
-        <h2 className="text-7xl leading-snug">Your Medical Record,</h2>
-        <h4 className="text-3xl my-10">but more secure and encrypted 🔒 </h4>
+    <div className=" bg-accent grid md:grid-cols-2 py-16 px-16 md:px-20 items-center">
+      <div className="flex flex-col order-2 md:order-1 justify-center font-bold ">
+        <h2 className="text-4xl md:text-7xl leading-snug">Your Medical Record,</h2>
+        <h4 className="text-xl md:text-3xl my-10">but more secure and encrypted 🔒 </h4>
         <a
-          className="w-[30%] text-center rounded-md text-primary bg-secondary px-6 py-4"
+          className="w-[70%] md:w-[30%] text-center rounded-md text-primary bg-secondary px-6 py-4"
           href=""
         >
           Create MRA ID
         </a>
-        <div className="flex gap-5 mt-10 items-center">
-          <h2 className="text-xl">Security Partner</h2>
+        <div className="flex gap-2 md:gap-5 mt-10 items-center">
+          <h2 className="text-lg md:text-xl">Security Partner</h2>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="120"
@@ -60,7 +60,7 @@ const Hero = () => {
           </svg>
         </div>
       </div>
-      <div className=" w-full">
+      <div className="order-1 md:order-2 w-full">
         <Image
           alt="Illustration of Doctor using computer systems"
           src={"/illustration.png"}
