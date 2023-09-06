@@ -5,8 +5,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Med Records App",
-  description: "Med Records App submission for pangea.cloud securathon",
+  title: "MedCare App",
+  icons:{
+    icon: '/logo.svg'
+  },
+  description: "MedCare App submission for pangea.cloud securathon",
 };
 
 export default function RootLayout({

@@ -1,0 +1,3 @@
+.infoBox {
+    @apply  md:border-primary-2 py-2 md:py-12 md:border-opacity-20
+}

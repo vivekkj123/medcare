@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "./styles.css";
 
 const Features = () => {
   return (
@@ -7,8 +8,9 @@ const Features = () => {
         Features
       </h2>
       <div className="grid md:grid-cols-2  text-center px-16">
-        <div className="border-0 md:border-primary-2 md:border-b-2  md:border-opacity-20 md:border-r-2 py-2 md:py-12">
+        <div className="infoBox md:border-b-2 md:border-r-2">
           <Image
+            alt="smiling face"
             className="mx-auto py-6"
             width={60}
             height={60}
@@ -22,9 +24,10 @@ const Features = () => {
             within the healthcare ecosystem
           </p>
         </div>
-        <div className="border-0 md:border-primary-2 md:border-b-2 md:border-l-2 md:border-opacity-20 py-2 md:py-12">
+        <div className="infoBox md:border-b-2 md:border-l-2">
           <Image
             className="mx-auto py-6"
+            alt="smiling face"
             width={60}
             height={60}
             src="/icons/cil_smile.svg"
@@ -37,22 +40,24 @@ const Features = () => {
         </div>
       </div>
       <div className="grid md:grid-cols-2 text-center px-16">
-        <div className="border-0 md:border-primary-2 md:border-t-2 md:border-opacity-20 md:border-r-2 py-2 md:py-12">
+        <div className="infoBox md:border-t-2 md:border-r-2">
           <Image
             className="mx-auto py-6"
+            alt="register icon"
             width={60}
             height={60}
             src="/icons/mdi_register-outline.svg"
           />
           <h2 className="font-bold text-xl my-2">Easy Sign Up</h2>
           <p>
-            Seamless sign up for MRA and minimal UI for displaying your medical
-            records
+            Seamless sign up for MedCare and minimal UI for displaying your
+            medical records
           </p>
         </div>
-        <div className="border-0 md:border-primary-2 md:border-t-2 md:border-opacity-20 md:border-l-2 py-2 md:py-12">
+        <div className="infoBox md:border-t-2 md:border-l-2">
           <Image
             className="mx-auto py-6"
+            alt="secure icon"
             width={60}
             height={60}
             src="/icons/grommet-icons_secure.svg"
