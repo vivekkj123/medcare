@@ -9,7 +9,7 @@ const NavBar = () => {
       </div>
       <div className="btnContainer">
         <a
-          href="https://pdn-iwcsahggy3youj4uwjolyeh7tnwuficm.login.aws.us.pangea.cloud"
+          href="https://pdn-iwcsahggy3youj4uwjolyeh7tnwuficm.login.aws.us.pangea.cloud/authorize?state=xxxxxxxxxxxxx"
           className="px-10 py-2 bg-primary text-secondary rounded-full"
         >
           Login

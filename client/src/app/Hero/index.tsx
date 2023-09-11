@@ -13,13 +13,18 @@ const Hero = () => {
         </h4>
         <a
           className="w-[70%] md:w-[30%] text-center rounded-md text-primary bg-secondary px-6 py-4"
-          href="https://pdn-iwcsahggy3youj4uwjolyeh7tnwuficm.login.aws.us.pangea.cloud"
+          href="https://pdn-iwcsahggy3youj4uwjolyeh7tnwuficm.login.aws.us.pangea.cloud/authorize?state=xxxxxxxxxxxxx"
         >
           Create MedCare ID
         </a>
         <div className="flex gap-2 md:gap-5 mt-10 items-center">
           <h2 className="text-lg md:text-xl">Security Partner</h2>
-          <Image alt="Pangea logo" src={"/icons/pangea.svg"} height={20} width={120} />
+          <Image
+            alt="Pangea logo"
+            src={"/icons/pangea.svg"}
+            height={20}
+            width={120}
+          />
         </div>
       </div>
       <div className="order-1 md:order-2 w-full">
