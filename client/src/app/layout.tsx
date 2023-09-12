@@ -1,25 +1,31 @@
+"use client";
 import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "MedCare App",
-  icons: {
-    icon: "/logo.svg",
-  },
-  description: "MedCare App submission for pangea.cloud securathon",
-};
+import { AuthProvider } from "@pangeacyber/react-auth";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const hostedLoginURL = process?.env?.NEXT_PUBLIC_AUTHN_HOSTED_LOGIN_URL || "";
+  const authConfig = {
+    clientToken: process?.env?.NEXT_PUBLIC_AUTHN_CLIENT_TOKEN || "",
+    domain: process?.env?.NEXT_PUBLIC_PANGEA_DOMAIN || "",
+  };
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>MedCare App</title>
+        <meta
+          name="description"
+          content="MedCare App submission for pangea.cloud securathon"
+        />
+      </head>
+      <AuthProvider loginUrl={hostedLoginURL} config={authConfig}>
+        <body>
+          <>{children}</>
+        </body>
+      </AuthProvider>
     </html>
   );
 }

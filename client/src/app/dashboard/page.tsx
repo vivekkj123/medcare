@@ -1,21 +1,62 @@
 "use client";
+import {
+  faUserCircle
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuth } from "@pangeacyber/react-auth";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import axios from "../axios";
 import CounterBlock from "./CounterBlock";
+import OnBoarding from "./OnBoarding";
 import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
+  const router = useRouter();
+  const { authenticated, login, user, client } = useAuth();
+  const [isNewUser, setisNewUser] = useState(false);
+  useEffect(() => {
+    if (!authenticated) {
+      router.push("/");
+    }
+    axios
+      .get("/users/getuserdetails/" + user?.refresh_token.identity)
+      .then((res) => {
+        console.log(res);
+        
+        setisNewUser(false);
+      })
+      .catch((err) => {
+        console.log(err);
+
+        setisNewUser(true);
+      });
+  }, [authenticated, user]);
+  console.log(user);
+
   return (
     <div className="h-screen bg-accent flex">
+      {isNewUser && <OnBoarding />}
       <Sidebar />
       <div className="py-10 w-full">
         <div className="w-full mb-10 px-10 flex justify-between border-b-2 py-4 border-primary-2">
           <h2 className="text-2xl font-bold">
-            Hi John Doe, <br /> Welcome Back
+            Hi {user?.profile.first_name} {user?.profile.last_name},
+            <br /> Welcome Back
           </h2>
-          <img
-            className="h-20 w-20 rounded-full object-cover"
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
-            alt=""
-          />
+          {user?.profile.image_url ? (
+            <img
+              className="h-16 w-16 rounded-full object-cover"
+              src={user?.profile.image_url}
+              alt=""
+            />
+          ) : (
+            <FontAwesomeIcon
+              color="#188DFF"
+              className="h-16 w-16"
+              icon={faUserCircle}
+            />
+          )}
         </div>
         <div className="py-10 px-20 w-full">
           <CounterBlock />

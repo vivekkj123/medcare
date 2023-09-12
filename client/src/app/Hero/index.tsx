@@ -1,7 +1,12 @@
+"use client";
+import { useAuth } from "@pangeacyber/react-auth";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Hero = () => {
+  const router = useRouter();
+  const { authenticated, login, logout } = useAuth();
   return (
     <div className=" bg-accent grid md:grid-cols-2 py-16 px-16 md:px-20 items-center">
       <div className="flex flex-col order-2 md:order-1 justify-center font-bold ">
@@ -12,10 +17,10 @@ const Hero = () => {
           but more secure and encrypted 🔒{" "}
         </h4>
         <a
-          className="w-[70%] md:w-[30%] text-center rounded-md text-primary bg-secondary px-6 py-4"
-          href="https://pdn-iwcsahggy3youj4uwjolyeh7tnwuficm.login.aws.us.pangea.cloud/authorize?state=xxxxxxxxxxxxx"
+          className="w-[70%] md:w-[30%] text-center rounded-md text-primary bg-secondary px-6 py-4 cursor-pointer"
+          onClick={() => (authenticated ? router.push("/dashboard") : login())}
         >
-          Create MedCare ID
+          {authenticated ? "Go to Dashboard" : "Create MedCare ID"}
         </a>
         <div className="flex gap-2 md:gap-5 mt-10 items-center">
           <h2 className="text-lg md:text-xl">Security Partner</h2>
