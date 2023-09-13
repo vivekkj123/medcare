@@ -1,7 +1,5 @@
 "use client";
-import {
-  faUserCircle
-} from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "@pangeacyber/react-auth";
 import { useRouter } from "next/navigation";
@@ -19,16 +17,17 @@ const Dashboard = () => {
     if (!authenticated) {
       router.push("/");
     }
+    console.log(user);
     axios
       .get("/users/getuserdetails/" + user?.refresh_token.identity)
       .then((res) => {
         console.log(res);
-        
+
         setisNewUser(false);
       })
       .catch((err) => {
         console.log(err);
-
+        // FIXME: setisNewUser(false);
         setisNewUser(true);
       });
   }, [authenticated, user]);
@@ -38,7 +37,7 @@ const Dashboard = () => {
     <div className="h-screen bg-accent flex">
       {isNewUser && <OnBoarding />}
       <Sidebar />
-      <div className="py-10 w-full">
+      <div className="py-10 w-full md:pl-[25%]">
         <div className="w-full mb-10 px-10 flex justify-between border-b-2 py-4 border-primary-2">
           <h2 className="text-2xl font-bold">
             Hi {user?.profile.first_name} {user?.profile.last_name},

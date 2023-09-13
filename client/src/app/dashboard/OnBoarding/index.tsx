@@ -51,7 +51,7 @@ const OnBoarding = () => {
   // form state
   const [FormData, setFormData] = useState({
     email: "",
-    id: "",
+    pangeaid: "",
     firstName: "",
     lastName: "",
     profileImg: "",
@@ -77,7 +77,7 @@ const OnBoarding = () => {
       firstName: first_name,
       lastName: last_name,
       email: email,
-      id: id,
+      pangeaid: id,
     });
   }, [user]);
   const [phoneNumber, setphoneNumber] = useState();
@@ -135,7 +135,7 @@ const OnBoarding = () => {
     <div
       className={` ${
         OnboardingCompleted ? "hidden" : "fixed"
-      }  bg-opacity-75 bg-black h-full w-full py-20`}
+      }  bg-opacity-75 bg-black h-full w-full z-20 py-20`}
     >
       <ToastContainer />
       <div className=" rounded-lg px-4 md:px-20 py-10 mx-auto bg-white w-[90%] md:w-[75%] h-[100%] overflow-y-scroll ">
