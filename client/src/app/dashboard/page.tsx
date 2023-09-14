@@ -13,6 +13,8 @@ const Dashboard = () => {
   const router = useRouter();
   const { authenticated, login, user, client } = useAuth();
   const [isNewUser, setisNewUser] = useState(false);
+  const [Records, setRecords] = useState([]);
+
   useEffect(() => {
     if (!authenticated) {
       router.push("/");
@@ -22,12 +24,12 @@ const Dashboard = () => {
       .get("/users/getuserdetails/" + user?.refresh_token.identity)
       .then((res) => {
         console.log(res);
-
         setisNewUser(false);
+        axios.get(`/file/document/user/${res.data.user.id}`).then((res) => {
+          setRecords(res.data);
+        });
       })
       .catch((err) => {
-        console.log(err);
-        // FIXME: setisNewUser(false);
         setisNewUser(true);
       });
   }, [authenticated, user]);
@@ -58,7 +60,10 @@ const Dashboard = () => {
           )}
         </div>
         <div className="py-10 px-20 w-full">
-          <CounterBlock />
+          <CounterBlock
+            title="Documents"
+            value={("0" + Records.length).slice(-2)}
+          />
         </div>
       </div>
     </div>

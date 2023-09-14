@@ -1,6 +1,6 @@
 "use client";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faPencil, faPlus, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf, faPencil, faPlus, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "@pangeacyber/react-auth";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -22,14 +22,9 @@ const Sidebar = () => {
         />
       </Link>
       <SidebarBtn
-        title={"Upload New Document"}
-        icon={faPlus}
-        link={"/new-doc"}
-      />
-      <SidebarBtn
-        title={"Manage Existing Documents"}
-        icon={faPencil}
-        link={"/new-doc"}
+        title={"My Documents"}
+        icon={faFilePdf}
+        link={"/my-documents"}
       />
       <SidebarBtn title={"Profile"} icon={faUser} link={"/my-profile"} />
       <SidebarBtn title={"Sign Out"} icon={faSignOut} onClick={logout} />
