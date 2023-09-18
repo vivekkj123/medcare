@@ -5,6 +5,9 @@ import axios from "../axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@pangeacyber/react-auth";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import QRCode from "react-qr-code";
 interface IRecord {
   _id: Key;
   title: String;
@@ -21,7 +24,7 @@ interface IRecord {
 const MyDocs = () => {
   const { user, authenticated } = useAuth();
   const [Records, setRecords] = useState<IRecord[]>([]);
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     if (!authenticated) {
       router.push("/");
@@ -30,9 +33,11 @@ const MyDocs = () => {
       axios
         .get("/users/getuserdetails/" + user?.refresh_token.identity)
         .then((res) => {
-          axios.get(`/file/document/user/${res.data.user.id}`).then((res) => {
-            setRecords(res.data);
-          });
+          axios
+            .get(`/file/document/user/${res.data.user.id}`)
+            .then((res) => {
+              setRecords(res.data);
+            });
         });
     }
   }, [user]);
@@ -44,7 +49,9 @@ const MyDocs = () => {
           <h2 className="text-3xl font-bold text-primary">My Documents</h2>
         </div>
         <div className="px-8 md:px-16 py-10 bg-white mx-5 md:mx-20 my-10 rounded-2xl h-[75%] overflow-y-scroll scrollbar-hide">
-          {Records.length === 0 && <h2 className="text-center font-bold">No Records Found</h2>}
+          {Records.length === 0 && (
+            <h2 className="text-center font-bold">No Records Found</h2>
+          )}
           {Records.map((rec) => (
             <div
               className="py-4 shadow-md px-10 my-10 rounded-lg"
@@ -54,17 +61,32 @@ const MyDocs = () => {
 
               <p>{rec.description}</p>
               <div className="flex justify-between items-center">
-                <Link
-                  className="bg-primary text-white px-4 py-2 rounded-full"
-                  href={
-                    rec.pdfFiles
-                      ? `${process?.env?.NEXT_PUBLIC_BACKEND_URL}/file/document/${rec?.pdfFiles[0]}`
-                      : "/"
-                  }
-                  target="_blank"
-                >
-                  View
-                </Link>
+                <div className="flex gap-2">
+                  <Link
+                    className="bg-primary text-white px-4 py-2 rounded-full"
+                    href={`${process?.env?.NEXT_PUBLIC_BACKEND_URL}/file/document/6501226640c41951c3e211b0`}
+                    target="_blank"
+                  >
+                    View
+                  </Link>
+                  <Popup
+                    trigger={
+                      <a className="bg-primary text-white px-4 py-2 rounded-full">
+                        Share
+                      </a>
+                    }
+                    position="bottom center"
+                  >
+                    <div>
+
+                    <QRCode
+                      value={rec.pdfFiles
+                        ? `${process?.env?.NEXT_PUBLIC_BACKEND_URL}/file/document/${rec?.pdfFiles[0]}`
+                        : "/"}
+                      />
+                      </div>
+                  </Popup>
+                </div>
                 <p className="text-right text-sm">
                   Uploaded by {rec.doctorName}, {rec.hospitalName}
                 </p>
