@@ -19,9 +19,13 @@ interface IRecord {
   uploadedBy: String;
 }
 const MyDocs = () => {
-  const { user } = useAuth();
+  const { user, authenticated } = useAuth();
   const [Records, setRecords] = useState<IRecord[]>([]);
+  const router = useRouter()
   useEffect(() => {
+    if (!authenticated) {
+      router.push("/");
+    }
     if (user != undefined) {
       axios
         .get("/users/getuserdetails/" + user?.refresh_token.identity)

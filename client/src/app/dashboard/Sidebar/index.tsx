@@ -1,6 +1,6 @@
 "use client";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faFilePdf, faPencil, faPlus, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faChartArea, faFilePdf, faPencil, faPlus, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "@pangeacyber/react-auth";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -25,6 +25,11 @@ const Sidebar = () => {
         title={"My Documents"}
         icon={faFilePdf}
         link={"/my-documents"}
+      />
+      <SidebarBtn
+        title={"Audit Log"}
+        icon={faChartArea}
+        link={"/audit-log"}
       />
       <SidebarBtn title={"Profile"} icon={faUser} link={"/my-profile"} />
       <SidebarBtn title={"Sign Out"} icon={faSignOut} onClick={logout} />

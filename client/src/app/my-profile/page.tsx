@@ -5,6 +5,8 @@ import { useAuth } from "@pangeacyber/react-auth";
 import axios from "../axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
+import { setCookie } from "cookies-next";
 
 interface IDisplayComponent {
   title: string;
@@ -20,7 +22,7 @@ const DisplayComponent = ({ title, value }: IDisplayComponent) => {
 };
 
 const MyProfile = () => {
-  const { user } = useAuth();
+  const { user, authenticated } = useAuth();
   const [User, setUser] = useState({
     email: "",
     pangeaid: "",
@@ -39,10 +41,15 @@ const MyProfile = () => {
       street: "",
     },
   });
+  const router = useRouter();
   useEffect(() => {
+    if (!authenticated) {
+      router.push("/");
+    }
     axios
       .get("/users/getuserdetails/" + user?.refresh_token.identity)
       .then((res) => {
+        setCookie("jwtToken",res.data.signedJWT)
         setUser(res.data?.user);
       });
   }, [user]);
