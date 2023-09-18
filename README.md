@@ -20,20 +20,6 @@ MedCare - Your Health, Our Priority.
 
 ---
 
-## API Endpoints
-
-Here are the main API endpoints of the MedCare platform:
-
-- **User Registration:** `/api/users/registeruser` - Register new users.
-- **User Details:** `/api/users/getuserdetails` - Get user details.
-- **User Details by Pangea ID:** `/api/users/getuserdetails/:pangeaId` - Get user details by Pangea ID.
-- **Medical Record Upload:** `/api/file/upload` - Upload medical records.
-- **Medical Record Retrieval (PDF):** `/api/file/document/:id` - Get a specific medical record in PDF format.
-- **User's Medical Records:** `/api/file/document/user/:id` - Get a user's medical records.
-- **Audit Log:** `/api/auditlog` - Get audit details.
-
----
-
 ## Technologies Used
 
 MedCare utilizes a modern technology stack to provide efficient healthcare management:
@@ -53,7 +39,7 @@ MedCare utilizes a modern technology stack to provide efficient healthcare manag
 The frontend is built using:
 
 - **Next.js**: A powerful React framework for server-side rendering and improved SEO.
-
+- **TypeScript**: A strongly typed programming language that builds on JavaScript, giving better tooling at any scale..
 - **Tailwind CSS**: A utility-first CSS framework for creating a responsive and visually appealing user interface.
 
 ---
@@ -62,46 +48,43 @@ The frontend is built using:
 
 To run MedCare locally, follow these steps:
 
-1. Clone the repository:
+1. Clone the repository (front-end and back-end):
    ```shell
-   git clone https://github.com/JoelJaison394/MedCare.git 
+   git clone --recursive https://github.com/vivekkj123/MedCare.git 
 
 2.  Navigate to the project directory:
     
-    shellCopy code
-    
-    `cd MedCare` 
+    ```
+    cd MedCare
+    ```
     
 3.  Install dependencies:
     
-    shellCopy code
-    
-    `npm install` 
+    ```
+    npm install
+    ```
     
 4.  Create an `.env` file in the root directory and set the following environment variables:
     
-    envCopy code
     
-    `PORT=8000
-    PANGEA_DOMAIN="aws.us.pangea.cloud"
-    PANGEA_VAULTTOKEN="your_pangea_vault_token"
-    PANGEA_VAULTCONFIGID="your_pangea_vault_config_id"
-    PANGEA_AUDITTOKEN="your_pangea_audit_token"
-    PANGEA_AUDITCONFIGID="your_pangea_audit_config_id"
-    PANGEA_USERAUTH_JWTSECRECT="your_jwt_secret"
-    DATABASE_URL="mongodb+srv://your_username:your_password@cluster0.jji2kcp.mongodb.net/medcare?retryWrites=true&w=majority"` 
-    
+    ```
+    NEXT_PUBLIC_PANGEA_DOMAIN=
+    NEXT_PUBLIC_AUTHN_CLIENT_TOKEN=
+    NEXT_PUBLIC_AUTHN_HOSTED_LOGIN_URL=
+    NEXT_PUBLIC_BACKEND_URL=
+    AUTHN_SERVICE_TOKEN=
+    ```
 
     
 5.  Start the development server:
     
     `npm run dev` 
     
-6.  Access the application at [http://localhost:8000](http://localhost:8000/).
+6.  Access the application at [http://localhost:8080](http://localhost:8080/).
     
 
 ----------
 
-## Frontend Repository
+## Backend Repository
 
-The frontend code for MedCare is available in a separate repository: [MedCare Frontend](https://github.com/vivekkj123/medcare)
+The backend code for MedCare is available in a separate repository: [MedCare Backend](https://github.com/JoelJaison394/MedCare/)
