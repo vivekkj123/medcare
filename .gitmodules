@@ -1,3 +1,6 @@
 # [submodule "server"]
 # 	path = server
 # 	url = git@github.com:JoelJaison394/MedCare.git
+[submodule "server"]
+	path = server
+	url = git@github.com:JoelJaison394/MedCare.git
